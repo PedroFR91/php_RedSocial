@@ -12,3 +12,10 @@ function createTable($name,$query)
     queryMysql("CREATE TABLE IF NOT EXISTS $name($query)");
     echo "Tabla '$name' creada o existente<br>";
 } 
+function queryMysql($query)
+{
+    global $connection;
+    $result=$connection->query($query);
+    if(!$result) die ("fatal error");
+    return $result;
+}
